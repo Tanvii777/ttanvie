@@ -1,0 +1,111 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  
+  /* Sections */
+  .navbar,
+  .hero,
+  .products,
+  .about,
+  .testimonials,
+  .footer-content {
+    width: 100%;
+    padding: 4rem 2rem; /* Adjust spacing here */
+  }
+  
+  /* Colors */
+
+  
+  .hero {
+    background-color: #1A1A1A;
+    color: white;
+  }
+  
+  .products {
+    background-color: #C2B280;
+  }
+  
+  .about {
+    background-color: #D6A8A1;
+  }
+  
+  .testimonials {
+    background-color: #F8F4EC;
+  }
+  
+  .footer-content {
+    background-color: #0F4D42;
+    color: white;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+  
+    .hero {
+      padding: 3rem 1rem;
+    }
+    .navbar {
+        padding: 1rem 2rem;
+      }
+    
+    .icon {
+        font-size: 1.5rem;
+      }
+  
+    /* Add more media-specific tweaks here */
+  }
+/* Base mobile-first styles */
+.navbar {
+    background-color: #F8F4EC;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-start;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .nav-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .icon {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+  }
+
+  .cart {
+    font-size: 1rem;
+}
