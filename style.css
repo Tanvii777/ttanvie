@@ -3,7 +3,8 @@ body, html {
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #FAF9F6; /* soft background base */
   }
   
   *, *::before, *::after {
@@ -16,7 +17,7 @@ body, html {
     overflow-x: hidden;
   }
   
-  /* Sections */
+  /* Section Layout */
   .navbar,
   .hero,
   .products,
@@ -24,88 +25,105 @@ body, html {
   .testimonials,
   .footer-content {
     width: 100%;
-    padding: 4rem 2rem; /* Adjust spacing here */
+    padding: 4rem 2rem;
   }
   
-  /* Colors */
-
+  /* Updated Elegant Color Scheme */
+  .navbar {
+    background-color: #FDFCFB;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
   
   .hero {
-    background-color: #1A1A1A;
-    color: white;
+    background-color: #0F0F0F;
+    color: #FFF;
   }
   
   .products {
-    background-color: #C2B280;
+    background-color: #EDE6DB;
   }
   
   .about {
-    background-color: #D6A8A1;
+    background-color: #F9F6F1;
   }
   
   .testimonials {
-    background-color: #F8F4EC;
+    background-color: #F5F3EF;
   }
   
   .footer-content {
-    background-color: #0F4D42;
-    color: white;
+    background-color: #1C1C1C;
+    color: #EEE;
   }
   
-  /* Responsive */
-  @media (max-width: 768px) {
-  
-    .hero {
-      padding: 3rem 1rem;
-    }
-    .navbar {
-        padding: 1rem 2rem;
-      }
-    
-    .icon {
-        font-size: 1.5rem;
-      }
-  
-    /* Add more media-specific tweaks here */
-  }
-/* Base mobile-first styles */
-.navbar {
-    background-color: #F8F4EC;
+  /* Navbar */
+  .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: end;
-    padding: 1rem;
+    align-items: center;
+    padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
   
   .logo {
     font-size: 1.6rem;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    align-self: flex-start;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Playfair Display', serif;
+    color: #1C1C1C;
+    transition: color 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #8A7350;
   }
   
   .nav-icons {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
   }
   
   .icon {
     background: none;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
+    color: #1C1C1C;
   }
   
   .icon:hover {
     transform: scale(1.1);
+    color: #8A7350;
   }
-
+  
   .cart {
-    font-size: 1rem;
-}
+    font-size: 1.1rem;
+  }
+  
+  /* Smooth Section Transitions */
+  section {
+    transition: background-color 0.5s ease;
+  }
+  
+  /* Responsive Enhancements */
+  @media (min-width: 768px) {
+    .hero {
+      padding: 3rem 1.5rem;
+    }
+  
+    .navbar {
+      padding: 1rem 1.5rem;
+    }
+  
+    .icon {
+      font-size: 1.5rem;
+    }
+  
+    .logo {
+      font-size: 1.4rem;
+    }
+  }
+  
