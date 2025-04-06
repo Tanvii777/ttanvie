@@ -1,3 +1,8 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -82,8 +87,18 @@ body, html {
   
   .nav-icons {
     display: flex;
-    gap: 1.2rem;
+    align-items: center;
+    gap: 0.6rem;
+    margin-right: 0.2rem;
   }
+  
+  .icon i {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
   
   .icon {
     background: none;
@@ -124,6 +139,9 @@ body, html {
   
     .logo {
       font-size: 1.4rem;
+    }
+    .cart {
+      font-size: 1.1rem;
     }
   }
   
