@@ -169,21 +169,21 @@ body, html {
   
   .brand-name {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: 600;
     letter-spacing: 2px;
     margin: 0;
   }
   
   .tagline {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-top: 1rem;
     color: #F2ECE9;
   }
   
   .cta-button {
     margin-top: 2rem;
-    padding: 0.9rem 2rem;
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
     background-color: #F2ECE9; /* Soft neutral */
