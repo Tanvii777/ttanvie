@@ -8,6 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 </head>
+<script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 60) {
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+        navbar.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.06)';
+      } else {
+        navbar.style.backgroundColor = 'rgba(250, 247, 242, 0.8)';
+        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.03)';
+      }
+    });
+  </script>
+  
 <body>
     <header class="navbar">
             <!-- logo and navigation link -->
