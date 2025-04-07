@@ -6,7 +6,7 @@
     <title>ttanvié</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="rose.png">
 </head>
 <script>
     window.addEventListener('scroll', () => {
@@ -19,6 +19,18 @@
         navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.03)';
       }
     });
+ 
+  const navbar = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      navbar.classList.add('shrink');
+    } else {
+      navbar.classList.remove('shrink');
+    }
+  });
+
+
   </script>
   
 <body>
