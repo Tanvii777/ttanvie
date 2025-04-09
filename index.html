@@ -42,8 +42,14 @@
             <div class="nav-icons">
             <button class="icon wishlist" aria-label="Wishlist">♡</button>
             <button class="icon cart" aria-label="Cart">🛒</button>
-            <button class="icon menu" aria-label="Menu">≡</button>
+            <button id="menu-toggle" aria-label="Menu" class="icon">≡</button>
   </div>
+
+  <nav id="mobile-menu" class="hidden fixed inset-0 z-50 bg-[#F6F5F3] text-[#121212] flex flex-col items-center justify-center gap-8 text-xl font-serif transition-all duration-300 md:hidden">
+    <a href="#products" class="hover:underline">Products</a>
+    <a href="#about" class="hover:underline">About</a>
+    <a href="#contact" class="hover:underline">Contact Us</a>
+  </nav>
     </header>
     <section class="hero">
         <!-- heading subtitle cta -->
@@ -62,19 +68,31 @@
       <img src="products/1.jpeg" alt="Product 1" />
       <h3 class="product-name">Velvet Rouge</h3>
       <p class="product-price">₹7,299</p>
+      <button class="wishlist-btn" aria-label="Add to wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      
     </div>
     <div class="product-card">
       <img src="products/2.jpeg" alt="Product 2" />
       <h3 class="product-name">Gold Luxe</h3>
       <p class="product-price">₹8,499</p>
+      <button class="wishlist-btn" aria-label="Add to wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      
     </div>
     <div class="product-card">
       <img src="products/3.jpeg" alt="Product 3" />
       <h3 class="product-name">Charcoal Mist</h3>
       <p class="product-price">₹3,999</p>
+      <button class="wishlist-btn" aria-label="Add to wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      
     </div>
   </div>
-    </section>
+    </section> 
     <section class="testimonials">
         <!-- testimonials -->
         <div class="testimonial-container">
@@ -116,5 +134,111 @@
         <p>&copy; 2023 Ttanvié. All rights reserved.</p>
       </div>
     </footer>
+    <div id="wishlist-toast" class="wishlist-toast hidden">Added to wishlist</div>
+    <div id="wishlist-modal" class="wishlist-modal hidden">
+      <div class="wishlist-content">
+        <h2>Your Wishlist</h2>
+        <div id="wishlist-items" class="wishlist-items"></div>
+        <button id="close-wishlist" class="close-btn">Close</button>
+      </div>
+    </div>
+    
+    <script>
+      const showToast = (message) => {
+        const toast = document.getElementById('wishlist-toast');
+        toast.textContent = message;
+        toast.classList.remove('hidden');
+        toast.classList.add('show');
+    
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.classList.add('hidden'), 300);
+        }, 1500);
+      };
+    
+      const updateWishlist = (product, isAdded) => {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+        if (isAdded) {
+          // Prevent duplicates
+          if (!wishlist.some(item => item.id === product.id)) {
+            wishlist.push(product);
+          }
+        } else {
+          wishlist = wishlist.filter(item => item.id !== product.id);
+        }
+    
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      };
+    
+      document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.classList.toggle('active');
+          const icon = btn.querySelector('i');
+          icon.classList.toggle('fa-regular');
+          icon.classList.toggle('fa-solid');
+    
+          const isAdded = btn.classList.contains('active');
+          const productCard = btn.closest('.product-card');
+          const product = {
+            id: productCard.dataset.id,
+            name: productCard.querySelector('.product-name')?.textContent || 'Unnamed',
+            image: productCard.querySelector('img')?.src || '',
+          };
+    
+          updateWishlist(product, isAdded);
+          showToast(isAdded ? 'Added to wishlist' : 'Removed from wishlist');
+        });
+      });
+    </script>
+    <script>
+      const wishlistIcon = document.querySelector('.icon.wishlist');
+      const wishlistModal = document.getElementById('wishlist-modal');
+      const closeWishlist = document.getElementById('close-wishlist');
+      const wishlistItemsContainer = document.getElementById('wishlist-items');
+    
+      wishlistIcon.addEventListener('click', () => {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlistItemsContainer.innerHTML = '';
+    
+        if (wishlist.length === 0) {
+          wishlistItemsContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+        } else {
+          wishlist.forEach(item => {
+            const div = document.createElement('div');
+            div.classList.add('wishlist-item');
+            div.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" />
+              <span>${item.name}</span>
+            `;
+            wishlistItemsContainer.appendChild(div);
+          });
+        }
+    
+        wishlistModal.classList.remove('hidden');
+      });
+    
+      closeWishlist.addEventListener('click', () => {
+        wishlistModal.classList.add('hidden');
+      });
+    </script>
+    
+   <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+      
+      // Toggle icon content
+      if (mobileMenu.classList.contains("active")) {
+        menuToggle.textContent = "✕";
+      } else {
+        menuToggle.textContent = "≡";
+      }
+    });
+  });
+</script>
 </body>
 </html>
